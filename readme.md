@@ -1,1 +1,2 @@
-AutoClicker/BlockHit will get auto ban on BlocksMC.
+BlockHit(AutoClicker) will get auto ban on BlocksMC.
+VerusDamage(LongJump) flags on BlocksMC.
