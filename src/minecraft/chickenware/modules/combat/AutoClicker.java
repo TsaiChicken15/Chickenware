@@ -34,7 +34,7 @@ public class AutoClicker extends Module implements MCHook
 	public static NumberSetting minCPSValue = new NumberSetting("MinCPS", 5, 1, 50, 1);
 	public static NumberSetting maxCPSValue = new NumberSetting("MaxCPS", 8, 1, 50, 1);
 	public static NumberSetting jitterValue = new NumberSetting("Jitter", 0, 0, 5, 0.5);
-	public static BooleanSetting blockHitValue	 = new BooleanSetting("BlockHit",false);
+	public static BooleanSetting blockHitValue = new BooleanSetting("BlockHit",false);
 	public static NumberSetting blockHitDurationValue = new NumberSetting("Duration", 200, 0, 1000, 1);
 	public static ModeSetting itemValue = new ModeSetting("LimitItem","None","None","Sword","Axe","Sword & Axe");
 	public static ModeSetting modeValue = new ModeSetting("Mode","Legit","Legit","Packet");
