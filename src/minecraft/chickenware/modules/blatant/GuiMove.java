@@ -39,30 +39,30 @@ public class GuiMove extends Module implements MCHook
 	{
 		if (!GameSettings.isKeyDown(mc.gameSettings.keyBindForward) || mc.currentScreen != null) 
 		{
-            mc.gameSettings.keyBindForward.pressed = false;
-        }
-        if (!GameSettings.isKeyDown(mc.gameSettings.keyBindBack) || mc.currentScreen != null) 
-        {
-            mc.gameSettings.keyBindBack.pressed = false;
-        }
-        if (!GameSettings.isKeyDown(mc.gameSettings.keyBindRight) || mc.currentScreen != null) 
-        {
-            mc.gameSettings.keyBindRight.pressed = false;
-        }
-        if (!GameSettings.isKeyDown(mc.gameSettings.keyBindLeft) || mc.currentScreen != null) 
-        {
-            mc.gameSettings.keyBindLeft.pressed = false;
-        }
-        if (!GameSettings.isKeyDown(mc.gameSettings.keyBindJump) || mc.currentScreen != null) 
-        {
-            mc.gameSettings.keyBindJump.pressed = false;
-        }
-        if (!GameSettings.isKeyDown(mc.gameSettings.keyBindSprint) || mc.currentScreen != null) 
-        {
-            mc.gameSettings.keyBindSprint.pressed = false;
-        }		
-        lastInvOpen = false;
-        invOpen = false;
+           	mc.gameSettings.keyBindForward.pressed = false;
+		}
+		if (!GameSettings.isKeyDown(mc.gameSettings.keyBindBack) || mc.currentScreen != null) 
+		{
+		    mc.gameSettings.keyBindBack.pressed = false;
+		}
+		if (!GameSettings.isKeyDown(mc.gameSettings.keyBindRight) || mc.currentScreen != null) 
+		{
+		    mc.gameSettings.keyBindRight.pressed = false;
+		}
+		if (!GameSettings.isKeyDown(mc.gameSettings.keyBindLeft) || mc.currentScreen != null) 
+		{
+		    mc.gameSettings.keyBindLeft.pressed = false;
+		}
+		if (!GameSettings.isKeyDown(mc.gameSettings.keyBindJump) || mc.currentScreen != null) 
+		{
+		    mc.gameSettings.keyBindJump.pressed = false;
+		}
+		if (!GameSettings.isKeyDown(mc.gameSettings.keyBindSprint) || mc.currentScreen != null) 
+		{
+		    mc.gameSettings.keyBindSprint.pressed = false;
+		}		
+		lastInvOpen = false;
+		invOpen = false;
 	}
 	public void onEvent(Event e) 
 	{
