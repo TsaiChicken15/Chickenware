@@ -39,11 +39,11 @@ public class AutoClicker extends Module implements MCHook
 	public static ModeSetting itemValue = new ModeSetting("LimitItem","None","None","Sword","Axe","Sword & Axe");
 	public static ModeSetting modeValue = new ModeSetting("Mode","Legit","Legit","Packet");
 	private long rightDelay = 1000 / RandomUtil.randomInt((int)minCPSValue.get(), (int)maxCPSValue.get());
-    private long rightLastSwing = 0L;
-    private long leftDelay = 1000 / RandomUtil.randomInt((int)minCPSValue.get(), (int)maxCPSValue.get());
-    private long leftLastSwing = 0L;
-    private long blockHitDelay = (long)(blockHitDurationValue.get() * 2);
-    private long lastblockHit = 0L;
+    	private long rightLastSwing = 0L;
+    	private long leftDelay = 1000 / RandomUtil.randomInt((int)minCPSValue.get(), (int)maxCPSValue.get());
+    	private long leftLastSwing = 0L;
+    	private long blockHitDelay = (long)(blockHitDurationValue.get() * 2);
+    	private long lastblockHit = 0L;
 	private boolean blocking;
 	public void onEvent2(Event e)
 	{
@@ -165,7 +165,7 @@ public class AutoClicker extends Module implements MCHook
 				}
 			}
 		}
-    }
+    	}
 	
 	public double shake() 
 	{
