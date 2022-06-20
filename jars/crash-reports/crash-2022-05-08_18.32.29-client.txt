@@ -1,0 +1,92 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 2022/5/8 ¤U¤È 6:32
+Description: Unexpected error
+
+java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(Unknown Source)
+	at java.util.ArrayList.remove(Unknown Source)
+	at chickenware.modules.render.Notifications.onEvent(Notifications.java:46)
+	at chickenware.Client.onEvent(Client.java:108)
+	at chickenware.ui.Hud.draw(Hud.java:20)
+	at net.minecraft.client.gui.GuiIngame.func_175180_a(GuiIngame.java:353)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1361)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1136)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:415)
+	at net.minecraft.client.main.Main.main(Main.java:114)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.util.ArrayList.rangeCheck(Unknown Source)
+	at java.util.ArrayList.remove(Unknown Source)
+	at chickenware.modules.render.Notifications.onEvent(Notifications.java:46)
+	at chickenware.Client.onEvent(Client.java:108)
+	at chickenware.ui.Hud.draw(Hud.java:20)
+	at net.minecraft.client.gui.GuiIngame.func_175180_a(GuiIngame.java:353)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player523'/84, l='MpServer', x=603.28, y=86.00, z=651.23]]
+	Chunk stats: MultiplayerChunkCache: 289, 289
+	Level seed: 0
+	Level generator: ID 02 - largeBiomes, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 584.00,64.00,166.00 - World: (584,64,166), Chunk: (at 8,4,6 in 36,10; contains blocks 576,0,160 to 591,255,175), Region: (1,0; contains chunks 32,0 to 63,31, blocks 512,0,0 to 1023,255,511)
+	Level time: 1271936 game time, 118387 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 17 total; [EntitySquid['Squid'/96, l='MpServer', x=548.25, y=62.56, z=661.47], EntitySquid['Squid'/97, l='MpServer', x=563.84, y=59.94, z=666.06], EntityBat['Bat'/98, l='MpServer', x=544.69, y=13.06, z=718.88], EntityBat['Bat'/99, l='MpServer', x=543.09, y=14.94, z=718.00], EntityBat['Bat'/100, l='MpServer', x=550.22, y=59.31, z=700.22], EntitySquid['Squid'/102, l='MpServer', x=569.13, y=62.00, z=664.09], EntityBat['Bat'/103, l='MpServer', x=572.75, y=21.00, z=711.22], EntityPlayerSP['Player523'/84, l='MpServer', x=603.28, y=86.00, z=651.23], EntityBat['Bat'/105, l='MpServer', x=595.44, y=27.19, z=715.50], EntityBat['Bat'/106, l='MpServer', x=595.25, y=27.34, z=716.75], EntityBat['Bat'/107, l='MpServer', x=656.94, y=39.94, z=615.09], EntityBat['Bat'/89, l='MpServer', x=529.66, y=46.03, z=699.13], EntityBat['Bat'/91, l='MpServer', x=545.72, y=58.06, z=652.03], EntityBat['Bat'/92, l='MpServer', x=546.72, y=56.84, z=644.78], EntitySquid['Squid'/93, l='MpServer', x=548.91, y=60.19, z=669.44], EntitySquid['Squid'/94, l='MpServer', x=551.19, y=62.03, z=661.69], EntitySquid['Squid'/95, l='MpServer', x=549.91, y=59.16, z=668.50]]
+	Retry entities: 0 total; []
+	Server brand: vanilla
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:405)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2774)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:444)
+	at net.minecraft.client.main.Main.main(Main.java:114)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_281, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 678151632 bytes (646 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 98
+	Launched Version: mcp
+	LWJGL: 2.9.1
+	OpenGL: GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 456.71, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: []
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	OptiFine Version: OptiFine_1.8_HD_U_H6
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 456.71
+	OpenGlRenderer: GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

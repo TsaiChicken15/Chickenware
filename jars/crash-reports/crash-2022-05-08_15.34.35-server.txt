@@ -1,0 +1,94 @@
+---- Minecraft Crash Report ----
+// Daisy, daisy...
+
+Time: 2022/5/8 ¤U¤È 3:34
+Description: Sending packet
+
+java.lang.IllegalArgumentException: Modifier is already applied on this attribute!
+	at net.minecraft.entity.ai.attributes.ModifiableAttributeInstance.applyModifier(ModifiableAttributeInstance.java:97)
+	at net.minecraft.entity.EntityLivingBase.setSprinting(EntityLivingBase.java:1468)
+	at net.minecraft.client.entity.EntityPlayerSP.setSprinting(EntityPlayerSP.java:493)
+	at chickenware.modules.combat.Sprint.onEvent(Sprint.java:47)
+	at chickenware.Client.onEvent(Client.java:105)
+	at net.minecraft.network.NetworkManager.sendPacket(NetworkManager.java:181)
+	at net.minecraft.network.NetHandlerPlayServer.sendPacket(NetHandlerPlayServer.java:741)
+	at net.minecraft.server.management.PlayerManager$PlayerInstance.sendToAllPlayersWatchingChunk(PlayerManager.java:482)
+	at net.minecraft.server.management.PlayerManager$PlayerInstance.onUpdate(PlayerManager.java:501)
+	at net.minecraft.server.management.PlayerManager.updatePlayerInstances(PlayerManager.java:91)
+	at net.minecraft.world.WorldServer.tick(WorldServer.java:218)
+	at optifine.WorldServerOF.tick(WorldServerOF.java:25)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:767)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:678)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:262)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:561)
+	at java.lang.Thread.run(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.entity.ai.attributes.ModifiableAttributeInstance.applyModifier(ModifiableAttributeInstance.java:97)
+	at net.minecraft.entity.EntityLivingBase.setSprinting(EntityLivingBase.java:1468)
+	at net.minecraft.client.entity.EntityPlayerSP.setSprinting(EntityPlayerSP.java:493)
+	at chickenware.modules.combat.Sprint.onEvent(Sprint.java:47)
+	at chickenware.Client.onEvent(Client.java:105)
+	at net.minecraft.network.NetworkManager.sendPacket(NetworkManager.java:181)
+
+-- Packet being sent --
+Details:
+	Packet class: net.minecraft.network.play.server.S23PacketBlockChange
+Stacktrace:
+	at net.minecraft.network.NetHandlerPlayServer.sendPacket(NetHandlerPlayServer.java:741)
+	at net.minecraft.server.management.PlayerManager$PlayerInstance.sendToAllPlayersWatchingChunk(PlayerManager.java:482)
+	at net.minecraft.server.management.PlayerManager$PlayerInstance.onUpdate(PlayerManager.java:501)
+	at net.minecraft.server.management.PlayerManager.updatePlayerInstances(PlayerManager.java:91)
+	at net.minecraft.world.WorldServer.tick(WorldServer.java:218)
+	at optifine.WorldServerOF.tick(WorldServerOF.java:25)
+
+-- Affected level --
+Details:
+	Level name: mcpworld
+	All players: 1 total; [EntityPlayerMP['Player474'/100, l='mcpworld', x=440.63, y=69.00, z=568.09]]
+	Chunk stats: ServerChunkCache: 932 Drop: 0
+	Level seed: -1587754402
+	Level generator: ID 02 - largeBiomes, ver 0. Features enabled: true
+	Level generator options: 
+	Level spawn location: 584.00,64.00,166.00 - World: (584,64,166), Chunk: (at 8,4,6 in 36,10; contains blocks 576,0,160 to 591,255,175), Region: (1,0; contains chunks 32,0 to 63,31, blocks 512,0,0 to 1023,255,511)
+	Level time: 1202394 game time, 48845 day time
+	Level dimension: 0
+	Level storage version: 0x04ABD - Anvil
+	Level weather: Rain time: 107791 (now: false), thunder time: 14075 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:767)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:678)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:262)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:561)
+	at java.lang.Thread.run(Unknown Source)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_281, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 664006152 bytes (633 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 98
+	Profiler Position: N/A (disabled)
+	Player Count: 1 / 8; [EntityPlayerMP['Player474'/100, l='mcpworld', x=440.63, y=69.00, z=568.09]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Very likely; Jar signature invalidated
+	OptiFine Version: OptiFine_1.8_HD_U_H6
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 456.71
+	OpenGlRenderer: GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

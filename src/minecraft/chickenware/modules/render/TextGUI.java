@@ -1,0 +1,181 @@
+package chickenware.modules.render;
+
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Comparator;
+
+import org.lwjgl.input.Keyboard;
+
+import chickenware.Client;
+import chickenware.events.Event;
+import chickenware.events.listeners.EventRenderGUI;
+import chickenware.events.listeners.EventUpdate;
+import chickenware.modules.Module;
+import chickenware.settings.BooleanSetting;
+import chickenware.settings.ModeSetting;
+import chickenware.utils.RenderUtil;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.ScaledResolution;
+
+public class TextGUI extends Module
+{
+	public TextGUI() 
+	{
+		super("TextGUI", Keyboard.KEY_NONE, Category.RENDER, false, "Shows a list of all currently enabled modules");
+		this.addSettings(colorValue, backGroundValue, antiAchievementValue);
+		this.toggled = true;
+	}
+	public static ModeSetting colorValue = new ModeSetting("Color","White","White","Light Gray","Gray","Dark Gray","Black","Red","Pink","Orange","Yellow","Green","Magenta","Cyan","Blue","Rainbow");
+	private BooleanSetting backGroundValue =  new BooleanSetting("Background", true);
+	private BooleanSetting antiAchievementValue =  new BooleanSetting("AntiAchievement", false);
+	private ArrayList<Module> toggledMods = new ArrayList<Module>();
+	private ArrayList<Module> modsList = new ArrayList<Module>();
+	public int color = 0;
+	public void onEvent2(Event e) 
+	{
+		if(e instanceof EventUpdate) 
+		{
+			if(colorValue.is("White"))
+			{
+				color = Color.WHITE.getRGB();
+			}
+			else if(colorValue.is("Light Gray"))
+			{
+				color = Color.LIGHT_GRAY.getRGB();
+			}
+			else if(colorValue.is("Gray"))
+			{
+				color = Color.GRAY.getRGB();
+			}
+			else if(colorValue.is("Dark Gray"))
+			{
+				color = Color.DARK_GRAY.getRGB();
+			}
+			else if(colorValue.is("Black"))
+			{
+				color = Color.BLACK.getRGB();
+			}
+			else if(colorValue.is("Red"))
+			{
+				color = Color.RED.getRGB();
+			}
+			else if(colorValue.is("Pink"))
+			{
+				color = Color.PINK.getRGB();
+			}
+			else if(colorValue.is("Orange"))
+			{
+				color = Color.ORANGE.getRGB();
+			}
+			else if(colorValue.is("Yellow"))
+			{
+				color = Color.YELLOW.getRGB();
+			}
+			else if(colorValue.is("Green"))
+			{
+				color = Color.GREEN.getRGB();
+			}
+			else if(colorValue.is("Magenta"))
+			{
+				color = Color.MAGENTA.getRGB();
+			}
+			else if(colorValue.is("Cyan"))
+			{
+				color = Color.CYAN.getRGB();
+			}
+			else if(colorValue.is("Blue"))
+			{
+				color = Color.BLUE.getRGB();
+			}
+			else if(colorValue.is("Rainbow"))
+			{
+				color = RenderUtil.getRainbow(4, 0.8f, 1);
+			}
+		}
+	}
+	public void onEvent(Event e)
+	{
+		if(e instanceof EventRenderGUI) 
+		{
+			ScaledResolution sr = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
+	    	FontRenderer fr = mc.fontRendererObj;
+	    	modsList = new ArrayList<Module>();
+			for(Module m: Client.getModule()) 
+			{
+				modsList.add(m);
+			}
+    		modsList.sort(Comparator.comparingInt(m -> mc.fontRendererObj.getStringWidth(String.valueOf(((Module)m).name + (((Module)m).additionalInfo != "" ? " " + ((Module)m).additionalInfo : "")))).reversed());
+	    	int count = 0;
+	    	int antiAchievementOffset = 0;
+	    	if(antiAchievementValue.get()) 
+	    	{
+	    		antiAchievementOffset = fr.FONT_HEIGHT * 4;
+	    	}
+	    	else 
+	    	{
+	    		antiAchievementOffset = 0;
+	    	}
+	    	toggledMods = new ArrayList<Module>();
+	    	for(Module m : modsList)
+	    	{
+	    		if(m.category.equals(category.OTHER) || m.category.equals(category.RENDER)) 
+	    		{
+	    			continue;
+	    		}
+	    		if(m.toggled && !toggledMods.contains(m))
+	    		{
+	    			toggledMods.add(m);
+	    		}
+	    	}
+	    	if(toggledMods.isEmpty()) return;
+	    	if(!toggledMods.isEmpty())
+	    	{
+		    	for (Module m : toggledMods) 
+		    	{
+		    		if(!toggledMods.contains(m)) return;
+		    		if (!m.toggled) 
+		    		{
+		    			toggledMods.remove(m);
+		    		}
+		    		float offset = (count * (fr.FONT_HEIGHT + 4));
+	    			if(backGroundValue.get()) 
+	    			{
+			    		Gui.drawRect((sr.getScaledWidth() - fr.getStringWidth(m.name + (m.additionalInfo != "" ? " ¡±7" + m.additionalInfo : "")) - 7), 
+			    			antiAchievementOffset + offset + 1, 
+			    			sr.getScaledWidth(), 
+			    			antiAchievementOffset + offset + 14, 
+			    			0x90000000);
+			    		Gui.drawRect((sr.getScaledWidth() - fr.getStringWidth(m.name + (m.additionalInfo != "" ? " ¡±7" + m.additionalInfo : "")) - 7), 
+			    			antiAchievementOffset + offset + 1, 
+			        		sr.getScaledWidth() - fr.getStringWidth(m.name + (m.additionalInfo != "" ? " ¡±7" + m.additionalInfo : "")) - 8, 
+			        		antiAchievementOffset + offset + 14, 
+			        		color);
+	
+		    			if(toggledMods.indexOf(m) != toggledMods.size() - 1)
+		    			{
+		    				Gui.drawRect((sr.getScaledWidth() - fr.getStringWidth(m.name + (m.additionalInfo != "" ? " ¡±7" + m.additionalInfo : "")) - 8), 
+					    			antiAchievementOffset + offset + 14, 
+					        		sr.getScaledWidth() - fr.getStringWidth(toggledMods.get(toggledMods.indexOf(m) + 1).getName() + (toggledMods.get(toggledMods.indexOf(m) + 1).additionalInfo != "" ? " ¡±7" + toggledMods.get(toggledMods.indexOf(m) + 1).additionalInfo : "")) - 7, 
+					        		antiAchievementOffset + offset + 15, 
+					        		color);
+		    			}
+		    			else 
+		    			{
+		    				Gui.drawRect((sr.getScaledWidth() - fr.getStringWidth(m.name + (m.additionalInfo != "" ? " ¡±7" + m.additionalInfo : "")) - 8), 
+					    			antiAchievementOffset + offset + 14, 
+					        		sr.getScaledWidth(), 
+					        		antiAchievementOffset + offset + 15, 
+					        		color);
+						}
+		    		}
+	    			fr.drawStringWithShadow(m.name + (m.additionalInfo != "" ? " ¡±7" + m.additionalInfo : ""), 
+			    			(sr.getScaledWidth() - fr.getStringWidth(m.name + (m.additionalInfo != "" ? " ¡±7" + m.additionalInfo : "")) - 3), 
+			    			antiAchievementOffset + 4 + offset, 
+			    			color);
+		    		count++;
+		    	}
+			}
+		}
+	}
+}
