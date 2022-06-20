@@ -52,10 +52,10 @@ public class Killaura extends Module
 	public static NumberSetting cantBeSeenRangeValue = new NumberSetting("WallRange", 2, 1, 6, 0.1);
 	public static NewLine a = new NewLine();
     public static EntityLivingBase target = null;
-    private long lastSwing;
-    private long delay = 1000 / RandomUtil.randomInt((int)minCPSValue.get(), (int)maxCPSValue.get());
-    private boolean needSpoof = false;
-    private int oldSlot = -1;
+	private long lastSwing;
+	private long delay = 1000 / RandomUtil.randomInt((int)minCPSValue.get(), (int)maxCPSValue.get());
+	private boolean needSpoof = false;
+	private int oldSlot = -1;
     public void onDisable() 
     {
     	target = null;
